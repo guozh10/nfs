@@ -1,2 +1,0 @@
-# nfs
-docker-compose nfs 

@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nfs-server:
+    container_name: nfs-server
+    image: docker.io/erichough/nfs-server:latest
+    network_mode: host
+    volumes:
+      - "/nfsdata:/nfsdata:rw"
+      - "./config/exports:/etc/exports"
+    restart: always
+    privileged: true

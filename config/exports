@@ -1,0 +1,1 @@
+/data *(rw,no_root_squash,no_all_squash,sync,anonuid=501,anongid=501)

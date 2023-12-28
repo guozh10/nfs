@@ -1,0 +1,31 @@
+# deploy nfs
+
+#docker-compose cp to /usr/local/bin
+
+cp ./bin/docker-compose /usr/local/bin/docker-compose
+
+#添加执行权限
+
+chmod +x /usr/local/bin/docker-compose
+
+#载入NFS 模块
+
+modprobe nfs
+modprobe nfsd
+
+#开机自动加载模块
+cp -a config/nfs.modules /etc/sysconfig/modules/
+
+#modify config/exports storage path 
+
+cat config/exports 
+
+#后台启动
+docker-compose up -d
+
+#查看日志
+docker-compose logs -f
+
+#使用dd命令测试nfs速度
+
+dd if=/dev/zero of=/tmp/testfile bs=1G count=1
